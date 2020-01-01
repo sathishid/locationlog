@@ -24,24 +24,13 @@ public class LocationController {
         return locationRepository.save(location);
     }
 
-    // @PostMapping(path = "", consumes = { "multipart/form-data" })
-    // public String postByUrl(@RequestParam("latitude") float latitude,
-    // @RequestParam("longitude") float longitude,
-    // @RequestParam("speed") float speed) {
-    // Location location = new Location();
-    // location.latitude = latitude;5
-    // location.longitude = longitude;
-    // location.speed = speed;
-    // locationRepository.save(location);
-    // return "Success";
-    // }
-
-    @GetMapping("submit/{lat}")
-    public Location submit(@PathVariable("lat") float latitude) {
+    @GetMapping("submit/{lat}/{lng}/{speed}")
+    public Location submit(@PathVariable("lat") float latitude, @PathVariable("lng") float longitude,
+            @PathVariable("speed") float speed) {
         Location location = new Location();
         location.latitude = latitude;
-        location.longitude = 1.4f;
-        location.speed = 2.4f;
+        location.longitude = longitude;
+        location.speed = speed;
         return locationRepository.save(location);
 
     }
